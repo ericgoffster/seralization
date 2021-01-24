@@ -10,7 +10,7 @@ import collections.immutable.ImmList;
  * Some of these operations may return UnsupportedOperationException, if the operation makes no sense
  * for the object.
  */
-public interface ArraySerialized extends ImmList<Serialized> {
+public interface ArraySerialized extends Serialized, ImmList<Serialized> {
     @Override
     <F> ImmList<F> map(Function<Serialized, F> function);
     @Override

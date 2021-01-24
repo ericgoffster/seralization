@@ -12,7 +12,7 @@ import collections.immutable.ImmList;
  * Represents a serialized array of other serialized objects. The class is
  * immutable and cannot be extended.
  */
-final class ArraySerializedObject implements Serialized, ArraySerialized {
+final class ArraySerializedObject implements ArraySerialized {
 	private final ImmList<Serialized> subElements;
 
 	@Override

@@ -8,7 +8,7 @@ import java.math.BigInteger;
  * Some of these operations may return UnsupportedOperationException, if the operation makes no sense
  * for the object.
  */
-public interface AtomSerialized {
+public interface AtomSerialized extends Serialized {
 	/**
 	 * Returns the string value of this SerializedObject.
 	 * The {@link SerializedFactory#NULL} object will return null.

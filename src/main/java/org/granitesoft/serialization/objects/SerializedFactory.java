@@ -23,6 +23,7 @@ public final class SerializedFactory {
 		VALID_CLASSES.add(AtomicSerializedObject.class);
 		VALID_CLASSES.add(NullSerializedObject.class);
 		VALID_CLASSES.add(StructSerializedObject.class);
+        VALID_CLASSES.add(NullAtom.class);
 	}
 
 	/**

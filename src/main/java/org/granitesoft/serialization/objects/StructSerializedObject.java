@@ -17,7 +17,7 @@ import collections.immutable.ImmSet;
  * Represents a serialized struct of other serialized objects. The class is
  * immutable and cannot be extended.
  */
-final class StructSerializedObject implements Serialized, StructSerialized {
+final class StructSerializedObject implements StructSerialized {
 	private final ImmMap<String, Serialized> elements;
 
 	@Override

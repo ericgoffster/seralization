@@ -10,7 +10,7 @@ import collections.immutable.ImmMap;
 /**
  * Defines all of the "struct" or "map" operations for a serialized object.
  */
-public interface StructSerialized extends ImmMap<String, Serialized> {
+public interface StructSerialized extends Serialized, ImmMap<String, Serialized> {
     @Override
     StructSerialized addAll(Iterable<? extends Entry<String, Serialized>> entries);
     @Override

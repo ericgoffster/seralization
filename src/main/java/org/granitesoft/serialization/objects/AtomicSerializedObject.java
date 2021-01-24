@@ -10,7 +10,7 @@ import org.granitesoft.requirement.Requirements;
  * Represents a serialized atomic value.   The atomic value can represent null, string, boolean, and numeric values.
  * arbitrary precision is allowed (via BigDecimal)
  */
-final class AtomicSerializedObject implements Serialized, AtomSerialized {
+final class AtomicSerializedObject implements AtomSerialized {
 	private final String value;
 	private final AtomType type;
 
