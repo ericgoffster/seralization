@@ -35,8 +35,8 @@ public class ArraySerializedObjectTest {
 	}
 	@Test
 	public void testToString() {
-		assertEquals(SerializedFactory.array(5, 6).toString(), "[ 5, 6 ]");
-		assertEquals(SerializedFactory.array(5).toString(), "[ 5 ]");
+		assertEquals(SerializedFactory.array(5, 6).toString(), "[5, 6]");
+		assertEquals(SerializedFactory.array(5).toString(), "[5]");
 		assertEquals(SerializedFactory.array().toString(), "[]");
 	}
 	@Test
@@ -45,30 +45,12 @@ public class ArraySerializedObjectTest {
 		assertThrows(IllegalArgumentException.class, () -> SerializedFactory.array(foo));
 	}
 	@Test
-	public void testIsNumeric() {
-		assertFalse(SerializedFactory.array().isNumeric());
-	}
-	@Test
-	public void testIsBoolean() {
-		assertFalse(SerializedFactory.array().isBoolean());
-	}
-	@Test
 	public void testIsNull() {
 		assertFalse(SerializedFactory.array().isNull());
 	}
 	@Test
 	public void testExceptions() {
 		Serialized so = SerializedFactory.array();
-		assertThrows(UnsupportedOperationException.class, () -> so.asShort());
-		assertThrows(UnsupportedOperationException.class, () -> so.asLong());
-		assertThrows(UnsupportedOperationException.class, () -> so.asInt());
-		assertThrows(UnsupportedOperationException.class, () -> so.asFloat());
-		assertThrows(UnsupportedOperationException.class, () -> so.asDouble());
-		assertThrows(UnsupportedOperationException.class, () -> so.asChar());
-		assertThrows(UnsupportedOperationException.class, () -> so.asByte());
-		assertThrows(UnsupportedOperationException.class, () -> so.asBoolean());
-		assertThrows(UnsupportedOperationException.class, () -> so.asBigInteger());
-		assertThrows(UnsupportedOperationException.class, () -> so.asBigDecimal());
-		assertThrows(UnsupportedOperationException.class, () -> so.asString());
+		assertThrows(UnsupportedOperationException.class, () -> so.asAtom());
  	}
 }

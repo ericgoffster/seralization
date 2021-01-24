@@ -117,7 +117,6 @@ public final class SerializedFactory {
 
 	/**
 	 * Creates an empty serialized object representing a struct.
-	 * Use {@link StructSerialized#set(String, Serialized)} (or its variants) to add more.
 	 * @return a serialized object representing an empty struct.
 	 */
 	public static Serialized object() {
@@ -126,7 +125,6 @@ public final class SerializedFactory {
 	
 	/**
 	 * Creates a pre-populated serialized object representing a struct.
-	 * Use {@link StructSerialized#set(String, Serialized)} (or its variants) to add more.
 	 * @param fields The initial map of fields - Can't be null
 	 * @return a serialized object representing a struct.
 	 */

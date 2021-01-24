@@ -6,14 +6,11 @@ import java.util.Objects;
 
 import org.granitesoft.requirement.Requirements;
 
-import collections.immutable.ImmList;
-import collections.immutable.ImmMap;
-
 /**
  * Represents a serialized atomic value.   The atomic value can represent null, string, boolean, and numeric values.
  * arbitrary precision is allowed (via BigDecimal)
  */
-final class AtomicSerializedObject implements Serialized {
+final class AtomicSerializedObject implements Serialized, AtomSerialized {
 	private final String value;
 	private final AtomType type;
 
@@ -123,29 +120,19 @@ final class AtomicSerializedObject implements Serialized {
 	public float asFloat() {
 		return asBigDecimal().floatValue();
 	}
-	
-	@Override
-	public Serialized set(String name, Serialized value) {
-        throw new UnsupportedOperationException("add(name, value) not supported on simple types");
-	}
-	
-	@Override
-	public Serialized add(Serialized value) {
-        throw new UnsupportedOperationException("add(value) not supported on simple types");
-	}
-	
-	@Override
-	public Serialized set(int index, Serialized value) {
-	    throw new UnsupportedOperationException("set(index, value) not supported on simple types");
-	}
 
-	@Override
-	public ImmMap<String, Serialized> asMap() {
-	    throw new UnsupportedOperationException("asMap not supported on simple types");
-	}
-	
-	@Override
-	public ImmList<Serialized> asList() {
-	    throw new UnsupportedOperationException("asList not supported on simple types");
-	}
+    @Override
+    public AtomSerialized asAtom() {
+        return this;
+    }
+
+    @Override
+    public ArraySerialized asArray() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public StructSerialized asObject() {
+        throw new UnsupportedOperationException();
+    }
 }

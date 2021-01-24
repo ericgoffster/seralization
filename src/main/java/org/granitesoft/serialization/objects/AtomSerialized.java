@@ -8,7 +8,7 @@ import java.math.BigInteger;
  * Some of these operations may return UnsupportedOperationException, if the operation makes no sense
  * for the object.
  */
-public interface BasicSerialized {
+public interface AtomSerialized {
 	/**
 	 * Returns the string value of this SerializedObject.
 	 * The {@link SerializedFactory#NULL} object will return null.
@@ -104,21 +104,15 @@ public interface BasicSerialized {
 	 */
 	float asFloat() ;
 
-	/**
-	 * Returns true is it is null.
-	 * @return true is it is null
-	 */
-	boolean isNull() ;
+    /**
+     * Returns true is it is numeric.
+     * @return true is it is numeric
+     */
+    boolean isNumeric() ;
 
-	/**
-	 * Returns true is it is numeric.
-	 * @return true is it is numeric
-	 */
-	boolean isNumeric() ;
-
-	/**
-	 * Returns true is it is boolean.
-	 * @return true is it is boolean
-	 */
-	boolean isBoolean() ;
+    /**
+     * Returns true is it is boolean.
+     * @return true is it is boolean
+     */
+    boolean isBoolean() ;
 }

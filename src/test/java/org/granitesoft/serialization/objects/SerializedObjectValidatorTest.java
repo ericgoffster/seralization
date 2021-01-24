@@ -1,14 +1,9 @@
 package org.granitesoft.serialization.objects;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-
 import org.granitesoft.requirement.Requirements;
 import org.junit.Test;
 
 import collections.immutable.ImmCollections;
-import collections.immutable.ImmList;
-import collections.immutable.ImmMap;
 
 public class SerializedObjectValidatorTest {
 
@@ -28,101 +23,25 @@ public class SerializedObjectValidatorTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void testBadObj() {
 		Serialized obj = new Serialized() {
-		    
-		    @Override
-		    public Serialized set(int index, Serialized value) {
-		        return null;
-		    }
-		    
-		    @Override
-		    public Serialized add(Serialized value) {
-		        return null;
-		    }
-		    
-		    @Override
-		    public Serialized set(String name, Serialized value) {
-		        return null;
-		    }
-
-			@Override
-			public String asString() {
-				return null;
-			}
-
-			@Override
-			public char asChar() {
-				return 0;
-			}
-
-			@Override
-			public boolean asBoolean() {
-				return false;
-			}
-
-			@Override
-			public BigDecimal asBigDecimal() {
-				return null;
-			}
-
-			@Override
-			public BigInteger asBigInteger() {
-				return null;
-			}
-
-			@Override
-			public long asLong() {
-				return 0;
-			}
-
-			@Override
-			public int asInt() {
-				return 0;
-			}
-
-			@Override
-			public short asShort() {
-				return 0;
-			}
-
-			@Override
-			public byte asByte() {
-				return 0;
-			}
-
-			@Override
-			public double asDouble() {
-				return 0;
-			}
-
-			@Override
-			public float asFloat() {
-				return 0;
-			}
-
-			@Override
-			public boolean isNull() {
-				return false;
-			}
-
-
-			@Override
-			public boolean isNumeric() {
-				return false;
-			}
-
-			@Override
-			public boolean isBoolean() {
-				return false;
-			}
 
             @Override
-            public ImmList<Serialized> asList() {
-                return ImmCollections.emptyList();
+            public AtomSerialized asAtom() {
+                return new AtomicSerializedObject("1", AtomType.numeric);
             }
 
             @Override
-            public ImmMap<String, Serialized> asMap() {
-                return ImmCollections.emptyMap();
+            public ArraySerialized asArray() {
+                return new ArraySerializedObject(ImmCollections.emptyList());
+            }
+
+            @Override
+            public StructSerialized asObject() {
+                return new StructSerializedObject(ImmCollections.emptyMap());
+            }
+
+            @Override
+            public boolean isNull() {
+                return false;
             }
 		};
 		Requirements.require(obj, SerializedFactory.IS_VALID_SERIAL);

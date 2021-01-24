@@ -33,20 +33,20 @@ public class NullSerializedObjectTest {
 	@Test
 	public void testValues() {
 		Serialized so = SerializedFactory.NULL;
-		assertTrue(so.asByte() == 0);
-		assertTrue(so.asShort() == 0);
-		assertTrue(so.asInt() == 0);
-		assertTrue(so.asLong() == 0);
-		assertTrue(so.asChar() == '\0');
-		assertNull(so.asString());
-		assertTrue(so.asFloat() == 0.0);
-		assertTrue(so.asDouble() == 0.0);
-		assertFalse(so.asBoolean());
-		assertNull(so.asBigDecimal());
-		assertNull(so.asBigInteger());
-		assertTrue(so.asList().size() == 0);
-		assertNull(so.asMap().get("7"));
-		assertTrue(so.isNumeric());
-		assertTrue(so.isBoolean());
+		assertTrue(so.asAtom().asByte() == 0);
+		assertTrue(so.asAtom().asShort() == 0);
+		assertTrue(so.asAtom().asInt() == 0);
+		assertTrue(so.asAtom().asLong() == 0);
+		assertTrue(so.asAtom().asChar() == '\0');
+		assertNull(so.asAtom().asString());
+		assertTrue(so.asAtom().asFloat() == 0.0);
+		assertTrue(so.asAtom().asDouble() == 0.0);
+		assertFalse(so.asAtom().asBoolean());
+		assertNull(so.asAtom().asBigDecimal());
+		assertNull(so.asAtom().asBigInteger());
+		assertTrue(so.asArray().size() == 0);
+		assertNull(so.asObject().get("7"));
+		assertTrue(so.asAtom().isNumeric());
+		assertTrue(so.asAtom().isBoolean());
 	}
 }

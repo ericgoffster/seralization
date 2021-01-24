@@ -35,40 +35,40 @@ public class StringSerializedObjectTest {
 	}
 	@Test
 	public void testToStringValue() {
-		assertEquals(SerializedFactory.of("5").asString(), "5");
+		assertEquals(SerializedFactory.of("5").asAtom().asString(), "5");
 	}
 	@Test
 	public void testValues() {
-		assertTrue(SerializedFactory.of((String)null).asByte() == 0);
-		assertTrue(SerializedFactory.of((String)null).asShort() == 0);
-		assertTrue(SerializedFactory.of((String)null).asInt() == 0);
-		assertTrue(SerializedFactory.of((String)null).asLong() == 0);
-		assertTrue(SerializedFactory.of((String)null).asChar() == '\0');
-		assertNull(SerializedFactory.of((String)null).asString());
-		assertTrue(SerializedFactory.of((String)null).asFloat() == 0.0);
-		assertTrue(SerializedFactory.of((String)null).asDouble() == 0.0);
-		assertFalse(SerializedFactory.of((String)null).asBoolean());
-		assertNull(SerializedFactory.of((String)null).asBigDecimal());
-		assertNull(SerializedFactory.of((String)null).asBigInteger());
+		assertTrue(SerializedFactory.of((String)null).asAtom().asByte() == 0);
+		assertTrue(SerializedFactory.of((String)null).asAtom().asShort() == 0);
+		assertTrue(SerializedFactory.of((String)null).asAtom().asInt() == 0);
+		assertTrue(SerializedFactory.of((String)null).asAtom().asLong() == 0);
+		assertTrue(SerializedFactory.of((String)null).asAtom().asChar() == '\0');
+		assertNull(SerializedFactory.of((String)null).asAtom().asString());
+		assertTrue(SerializedFactory.of((String)null).asAtom().asFloat() == 0.0);
+		assertTrue(SerializedFactory.of((String)null).asAtom().asDouble() == 0.0);
+		assertFalse(SerializedFactory.of((String)null).asAtom().asBoolean());
+		assertNull(SerializedFactory.of((String)null).asAtom().asBigDecimal());
+		assertNull(SerializedFactory.of((String)null).asAtom().asBigInteger());
 		
-		assertTrue(SerializedFactory.of("5").asChar() == '5');
-		assertEquals(SerializedFactory.of("5").asString(), "5");
+		assertTrue(SerializedFactory.of("5").asAtom().asChar() == '5');
+		assertEquals(SerializedFactory.of("5").asAtom().asString(), "5");
 		
-		assertTrue(SerializedFactory.of("").asChar() == '\0');
-		assertTrue(SerializedFactory.of('5').asChar() == '5');
-		assertEquals(SerializedFactory.of('5').asString(), "5");
+		assertTrue(SerializedFactory.of("").asAtom().asChar() == '\0');
+		assertTrue(SerializedFactory.of('5').asAtom().asChar() == '5');
+		assertEquals(SerializedFactory.of('5').asAtom().asString(), "5");
 				
 		{
 			Serialized so = SerializedFactory.of("5");
 			assertFalse(so.isNull());
-			assertFalse(so.isBoolean());
-			assertFalse(so.isNumeric());
+			assertFalse(so.asAtom().isBoolean());
+			assertFalse(so.asAtom().isNumeric());
 		}
 	}
 	
 	@Test
 	public void testExceptions() {
- 		assertThrows(UnsupportedOperationException.class, () -> SerializedFactory.of("x").asBigDecimal());
- 		assertThrows(UnsupportedOperationException.class, () -> SerializedFactory.of("x").asBoolean());
+ 		assertThrows(UnsupportedOperationException.class, () -> SerializedFactory.of("x").asAtom().asBigDecimal());
+ 		assertThrows(UnsupportedOperationException.class, () -> SerializedFactory.of("x").asAtom().asBoolean());
  	}
 }

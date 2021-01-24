@@ -3,16 +3,10 @@ package org.granitesoft.serialization.objects;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Collections;
 import java.util.HashSet;
-
-import javax.management.ImmutableDescriptor;
 
 import org.junit.Test;
 
@@ -53,36 +47,18 @@ public class StructSerializedObjectTest {
 		assertTrue(h.contains(so2));
 	}
 	@Test
-	public void testIsNumeric() {
-		assertFalse(SerializedFactory.object().isNumeric());
-	}
-	@Test
-	public void testIsBoolean() {
-		assertFalse(SerializedFactory.object().isBoolean());
-	}
-	@Test
 	public void testIsNull() {
 		assertFalse(SerializedFactory.object().isNull());
 	}
 	@Test
 	public void testToString() {
-		assertEquals(SerializedFactory.object(ImmCollections.asMap("x", SerializedFactory.of(6))).toString(), "{ \"x\": 6 }");
-		assertEquals(SerializedFactory.object(ImmCollections.asMap("x", SerializedFactory.of(6), "y", SerializedFactory.of(7))).toString(), "{ \"x\": 6, \"y\": 7 }");
+		assertEquals(SerializedFactory.object(ImmCollections.asMap("x", SerializedFactory.of(6))).toString(), "{x=6}");
+		assertEquals(SerializedFactory.object(ImmCollections.asMap("x", SerializedFactory.of(6), "y", SerializedFactory.of(7))).toString(), "{x=6, y=7}");
 		assertEquals(SerializedFactory.object().toString(), "{}");
 	}
 	@Test
 	public void testExceptions() {
 		Serialized so = SerializedFactory.object();
-		assertThrows(UnsupportedOperationException.class, () -> so.asShort());
-		assertThrows(UnsupportedOperationException.class, () -> so.asLong());
-		assertThrows(UnsupportedOperationException.class, () -> so.asInt());
-		assertThrows(UnsupportedOperationException.class, () -> so.asFloat());
-		assertThrows(UnsupportedOperationException.class, () -> so.asDouble());
-		assertThrows(UnsupportedOperationException.class, () -> so.asChar());
-		assertThrows(UnsupportedOperationException.class, () -> so.asByte());
-		assertThrows(UnsupportedOperationException.class, () -> so.asBoolean());
-		assertThrows(UnsupportedOperationException.class, () -> so.asBigInteger());
-		assertThrows(UnsupportedOperationException.class, () -> so.asBigDecimal());
-		assertThrows(UnsupportedOperationException.class, () -> so.asString());
+		assertThrows(UnsupportedOperationException.class, () -> so.asAtom());
  	}
 }

@@ -1,19 +1,30 @@
 package org.granitesoft.serialization.objects;
 
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
+
 import collections.immutable.ImmMap;
 
 /**
  * Defines all of the "struct" or "map" operations for a serialized object.
  */
-public interface StructSerialized {
-    /**
-     * Retrieve the struct as a map of Serialized objects.
-     * This operation is *IMMUTABLE*.  The original array is unchanged.
-     * @return the struct as a map of Serialized objects.
-     * @throws UnsupportedOperationException if the operation is not appropriate for the type.
-     * @throws IllegalArgumentException if array is null.
-     */
-    ImmMap<String, Serialized> asMap();
-
-    Serialized set(String name, Serialized value);
+public interface StructSerialized extends ImmMap<String, Serialized> {
+    @Override
+    StructSerialized addAll(Iterable<? extends Entry<String, Serialized>> entries);
+    @Override
+    StructSerialized addAll(Map<String, Serialized> map);
+    @Override
+    StructSerialized put(String key, Serialized value);   
+    @Override
+    StructSerialized removeKey(String key); 
+    @Override
+    StructSerialized retainAllKeys(Iterable<? extends String> keys);
+    @Override
+    StructSerialized removeAllKeysIn(Iterable<? extends String> keys);    
+    @Override
+    StructSerialized filterKeys(Predicate<String> keyFilter);
+    @Override
+    StructSerialized filter(BiPredicate<String, Serialized> filter);
 }
